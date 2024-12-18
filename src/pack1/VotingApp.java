@@ -29,8 +29,8 @@ public class VotingApp {
                     long identityNumber;
                     try {
                         identityNumber = Long.parseLong(identityStr); // Convert to long
-                        if (identityStr.length() > 13) {
-                            System.out.println("Identity number must not exceed 13 digits!");
+                        if (identityStr.length() != 13) {
+                            System.out.println("Identity number must be exactly 13 digits!");
                             break;
                         }
                     } catch (NumberFormatException e) {
@@ -45,11 +45,23 @@ public class VotingApp {
                     System.out.println(registrationResult);
                     break;
 
-
                 case 2:
                     // Voter login
                     System.out.print("Enter your Identity Number: ");
-                    String id = scanner.nextLine();
+                    String idStr = scanner.nextLine(); // Read input as String for validation
+                    long id;
+
+                    try {
+                        id = Long.parseLong(idStr); // Convert to long
+                        if (idStr.length() != 13) {
+                            System.out.println("Identity number must be exactly 13 digits!");
+                            break;
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid identity number! Please enter a numeric value.");
+                        break;
+                    }
+
                     System.out.print("Enter your Password: ");
                     String pass = scanner.nextLine();
 
@@ -87,6 +99,7 @@ public class VotingApp {
                 default:
                     System.out.println("Invalid choice! Please try again.");
             }
+
         }
     }
 }

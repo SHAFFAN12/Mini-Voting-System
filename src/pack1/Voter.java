@@ -8,8 +8,8 @@ public class Voter {
 
     public Voter(String name, long identityNumber, String password){
         // Validate that identityNumber is 13 digits
-        if (String.valueOf(identityNumber).length() > 13) {
-            throw new IllegalArgumentException("Identity number must not exceed 13 digits!");
+        if (String.valueOf(identityNumber).length() != 13) {
+            throw new IllegalArgumentException("Identity number must be exactly 13 digits!");
         }
         this.name = name;
         this.identityNumber = identityNumber;
